@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using MessageEncoder;
+using MessageEncoder.Core;
+using MessageEncoder.Core.Implementations;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
@@ -14,7 +16,8 @@ Message createMessage()
     return new Message { Headers = headerDictionary, Payload = payloadByte };
 }
 
-var messageCodec = new MessageCodec();
+
 var message = createMessage();
-var encodedMessage = messageCodec.encode(message);
-var decodedMessage  = messageCodec.decode(encodedMessage);
+MessageCodec messageCodec = new MessageCodec();
+var encodedMessage = messageCodec.Encode(message);
+messageCodec.Decode(encodedMessage);
